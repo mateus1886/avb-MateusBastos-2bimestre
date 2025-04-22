@@ -18,6 +18,7 @@ export default function Footer() {
         <p className="mt-6 text-sm text-slate-500 dark:text-slate-400 lg:mt-0">
           © 2025 Esporte360. Inspirando saúde e movimento.
         </p>
+        
       </div>
     </footer>
   );

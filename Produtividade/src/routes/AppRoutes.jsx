@@ -1,4 +1,4 @@
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Detalhes from "../pages/Detalhes";
 import Favoritos from "../pages/Favoritos";

@@ -18,9 +18,9 @@ export default function AppRoutes() {
         
         <div>
             <Routes>
-            <Route path="/" element = {<Home />} />
-            <Route path="/detalhes" element = {<Detalhes />} />
-            <Route path="/favoritos" element = {<Favoritos />} />
+                <Route path="/" element = {<Home />} />
+                <Route path="/detalhes/:id" element = {<Detalhes />} />
+                <Route path="/favoritos" element = {<Favoritos />} />
             </Routes>
             </div>     
         </BrowserRouter>

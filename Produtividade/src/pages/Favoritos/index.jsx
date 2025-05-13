@@ -1,7 +1,11 @@
-export default function Favoritos() {
-    return (
-    <>
-    <h1 className="text-2x1 font-bold">Favoritos</h1>
-    </>
-    );
-    }
+import React from 'react';
+
+const Favoritos = () => {
+  return (
+    <div>
+      <h1>Página de Favoritos</h1>
+    </div>
+  );
+};
+
+export default Favoritos;

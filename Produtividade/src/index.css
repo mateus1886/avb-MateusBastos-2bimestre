@@ -28,6 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f7fafc; /* Um cinza claro */
+  font-family: 'Inter', sans-serif; /* Uma fonte limpa e moderna */
 }
 
 h1 {

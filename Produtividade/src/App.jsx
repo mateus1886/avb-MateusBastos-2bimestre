@@ -1,27 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Main from './components/Main'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import AppRoutes from './routes/AppRoutes'
-
+// src/App.jsx
+import { BrowserRouter } from 'react-router-dom'; // Importando BrowserRouter
+import Navbar from './components/Navbar';  // Importando a Navbar
+import AppRoutes from './routes/AppRoutes';  // Importando as rotas da aplicação
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div> 
-        <AppRoutes/>
-    </div>
-    </>
-  ) 
-
-  
+    <BrowserRouter> {/* Envolvendo a aplicação com o BrowserRouter */}
+      <Navbar />  {/* Navbar vai aparecer em todas as páginas */}
+      <AppRoutes />  {/* As rotas da aplicação */}
+    </BrowserRouter>
+  );
 }
 
-
-
-export default App
+export default App;

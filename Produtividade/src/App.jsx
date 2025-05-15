@@ -2,6 +2,8 @@
 import { BrowserRouter } from 'react-router-dom'; // Importando BrowserRouter
 import Navbar from './components/Navbar';  // Importando a Navbar
 import AppRoutes from './routes/AppRoutes';  // Importando as rotas da aplicação
+import Detalhes from './pages/Detalhes';
+
 
 function App() {
   return (

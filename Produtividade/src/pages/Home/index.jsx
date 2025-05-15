@@ -19,7 +19,7 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {countries.map(country => (
           <div key={country.cca3} className="bg-white shadow-lg rounded-lg p-4 text-center">
-            <Link to={`/country/${country.cca3}`}>
+            <Link to={`/detalhes/${country.cca3}`}>
               <img
                 src={country.flags.png}
                 alt={country.name.common}

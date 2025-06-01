@@ -4,9 +4,21 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 py-3 flex items-center justify-between">
       {/* Logo ou título */}
-      <Link to="/" className="text-gray-800 text-xl font-semibold hover:text-blue-600 transition-colors duration-300">
-        Home
-      </Link>
+      <div className="flex items-center gap-6">
+        <Link
+          to="/"
+          className="text-gray-800 text-xl font-semibold hover:text-blue-600 transition-colors duration-300"
+        >
+          Home
+        </Link>
+
+        <Link
+          to="/favoritos"
+          className="text-gray-800 text-xl font-semibold hover:text-blue-600 transition-colors duration-300"
+        >
+          Favoritos
+        </Link>
+      </div>
 
       {/* Botão hamburguer para mobile (pode remover se quiser) */}
       <div className="md:hidden">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import FavoriteButton from '../../components/FavoriteButton.jsx';
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
@@ -27,6 +28,7 @@ const Home = () => {
               />
               <h2 className="text-xl font-semibold">{country.name.common}</h2>
             </Link>
+            <FavoriteButton item={{ id: country.cca3, nome: country.name.common, ...country }} />
           </div>
         ))}
       </div>

@@ -1,21 +1,17 @@
-import { useFavorites } from '../context/FavoriteContext';
+import React from 'react';
+import { useFavorites } from '../context/FavoritesContext';
 
 const FavoriteButton = ({ item }) => {
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const favorite = isFavorite(item.id);
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorited = favorites.includes(item);
 
   return (
     <button
       onClick={() => toggleFavorite(item)}
-      style={{
-        cursor: 'pointer',
-        fontSize: '1.5rem',
-        background: 'none',
-        border: 'none'
-      }}
-      aria-label="Favoritar"
+      className="text-2xl hover:scale-110 transition-transform"
+      title={isFavorited ? "Desfavoritar" : "Favoritar"}
     >
-      {favorite ? '❤️' : '🤍'}
+      {isFavorited ? '❤️' : '🤍'}
     </button>
   );
 };

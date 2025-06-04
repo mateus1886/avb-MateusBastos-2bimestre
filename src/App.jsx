@@ -1,16 +1,24 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Detalhes from './pages/Detalhes';
+import Favoritos from './pages/Favorites';
+import { FavoritesProvider } from './context/FavoritesContext';
 import Navbar from './components/Navbar';
-import AppRoutes from './routes/AppRoutes';
-import { FavoriteProvider } from './context/FavoriteContext';  // Importa o provider
 
 function App() {
   return (
-    <FavoriteProvider> {/* Envolvendo a app inteira com o contexto */}
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-      </BrowserRouter>
-    </FavoriteProvider>
+    <FavoritesProvider>
+      <Router>
+        <Navbar /> {/* Navbar visível em todas as páginas */}
+        <div className="pt-20"> {/* Espaço para não esconder o conteúdo */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/detalhes" element={<Detalhes />} />
+            <Route path="/favoritos" element={<Favoritos />} />
+          </Routes>
+        </div>
+      </Router>
+    </FavoritesProvider>
   );
 }
 

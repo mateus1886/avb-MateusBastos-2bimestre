@@ -1,37 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import FavoriteButton from '../../components/FavoriteButton.jsx';
+import { useFavorites } from '../../context/FavoritesContext';
 
 const Home = () => {
-  const [countries, setCountries] = useState([]);
+  const [facts, setFacts] = useState([]);
+  const navigate = useNavigate();
+  const { favorites, toggleFavorite } = useFavorites();
 
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all')
-      .then(response => {
-        setCountries(response.data);
-      })
-      .catch(error => console.log(error));
+    axios
+      .get('https://catfact.ninja/facts?limit=20')
+      .then(response => setFacts(response.data.data))
+      .catch(error => console.error('Erro ao buscar fatos:', error));
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Lista de Países</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {countries.map(country => (
-          <div key={country.cca3} className="bg-white shadow-lg rounded-lg p-4 text-center">
-            <Link to={`/detalhes/${country.cca3}`}>
-              <img
-                src={country.flags.png}
-                alt={country.name.common}
-                className="w-full h-32 object-contain mb-4 mx-auto"
-              />
-              <h2 className="text-xl font-semibold">{country.name.common}</h2>
-            </Link>
-            <FavoriteButton item={{ id: country.cca3, nome: country.name.common, ...country }} />
-          </div>
-        ))}
-      </div>
+    <div className="p-6 mt-1">
+      <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
+        🐾 Fatos Curiosos sobre Gatos 🐾
+      </h1>
+
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {facts.map((factObj, index) => {
+          const isFavorited = favorites.includes(factObj.fact);
+          return (
+            <li
+              key={index}
+              className="bg-yellow-100 border-l-4 border-yellow-400 rounded-xl p-4 shadow hover:shadow-lg transition duration-300"
+            >
+              <p
+                className="cursor-pointer text-base text-gray-800 hover:text-blue-600 transition-colors mb-3"
+                onClick={() => navigate('/detalhes', { state: { fact: factObj.fact } })}
+              >
+                🐱 {factObj.fact}
+              </p>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => toggleFavorite(factObj.fact)}
+                  className="text-2xl hover:scale-110 transition-transform"
+                  title={isFavorited ? 'Desfavoritar' : 'Favoritar'}
+                >
+                  {isFavorited ? '❤️' : '🤍'}
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
